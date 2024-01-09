@@ -8,7 +8,7 @@ Written for ES6.
 
 This was written in TypeScript and exported to ES6 to allow support for browsers not yet up to the most recent ECMAScript standards.
 
-## Contents
+## Assets
 
 The files in this set are as follows:
 
@@ -22,11 +22,17 @@ The files in this set are as follows:
 | mpc_toplink.min.js.map  | Map file.
 | _invoke.js              | Example implementation code.
 
-## Implementation
+## Installation
+
+Download this repo, or just the script, and add it to the script library for your site.
+
+This script has no external dependencies.
+
+## Configuration
 
 The script inserts a link to the top of the page before each heading specified by `pAddTags` in the section of the document specified by `pContainer`.
 
-The top of the page is an ID that should be defined and passed in to the call. The fallthrough is as follows:
+The referenced top of the page is an ID that should be defined and passed in to the call. The fallthrough is as follows:
 
   1. Use the specified ID passed in on instantiation.
   2. If no ID was passed, check the body tag for an ID.
