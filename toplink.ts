@@ -20,6 +20,8 @@
  *                  |                   | receive top links.
  *  top_topID       | 'top'             | Default top id.
  *  top_skipFirst   | true              | Skip top link on first heading.
+ *  top_exclude     | 'dl, #toc-links,  | Comma separated list of parent
+ *                  | .skip-toplink'    | containers to exclude.
  *  top_auto        | true              | Automatically add tags or
  *                  |                   | wait for manual execution.
  * --- Revision History ------------------------------------------------------- *
@@ -27,6 +29,7 @@
  * ---------------------------------------------------------------------------- */
 class mpc_toplink {
   addTags           : string;
+  excludeParents    : string;
   skipFirst         : boolean;
   topID             : string;
   topList           : NodeListOf<HTMLElement>;
@@ -38,11 +41,13 @@ class mpc_toplink {
     pContainer      : string            = 'page-body',
     pTopId          : string | null     = null,
     pSkipFirst      : boolean           = true,
+    pExclude         : string            = 'dl, #toc-links, .skip-toplink',
     pAuto           : boolean           = true,
   ) {
                     // Variables to generate links back to the top of the page  *
     this.skipFirst            = pSkipFirst;
     this.addTags              = pAddTags;
+    this.excludeParents       = pExclude;
     this.topID                = (pTopId) || (document.body.id || 'top');
     if (!this.topID.startsWith('#')) { this.topID = '#'+this.topID; }
     this.container            = pContainer;
@@ -55,13 +60,13 @@ class mpc_toplink {
     this.topLinkDiv.appendChild(this.topLinkA);
     if (pAuto) { this.create(); }
   }
-
+                    // Link generator                                           *
   create() {
     this.topList    = document.getElementById(this.container)?.querySelectorAll(this.addTags) as NodeListOf<HTMLElement>;
     this.topList.forEach ((el) => {
       if (this.skipFirst) {
         this.skipFirst = false;
-      } else if (el.parentNode) {
+      } else if (!(el.closest(this.excludeParents)) && el.parentNode) {
         el.parentNode.insertBefore(this.topLinkDiv.cloneNode(true), el);
       }
     });

@@ -12,21 +12,28 @@ This was written in TypeScript and exported to ES6 to allow support for browsers
 
 The files in this set are as follows:
 
-| path                    | description
-| ------------            | ------------
-| LICENSE.md              | License notice ( [MIT](https://mit-license.org) ).
-| README.md               | This document.
-| mpc_toplink.ts          | The class definition in TypeScript.
-| mpc_toplink.js          | The class definition in ES6.
-| mpc_toplink.min.js      | Minified version.
-| mpc_toplink.min.js.map  | Map file.
-| _invoke.js              | Example implementation code.
+| path                   | description                                        |
+| ---------------------- | -------------------------------------------------- |
+| LICENSE.md             | License notice ( [MIT](https://mit-license.org) ). |
+| README.md              | This document.                                     |
+| mpc_toplink.ts         | The class definition in TypeScript.                |
+| mpc_toplink.js         | The class definition in ES6.                       |
+| mpc_toplink.min.js     | Minified version.                                  |
+| mpc_toplink.min.js.map | Map file.                                          |
+| tsconfig.json          | Example TS > ES 6 config setting.                  |
+| _invoke.js             | Example implementation code.                       |
 
 ## Installation
 
 Download this repo, or just the script, and add it to the script library for your site.
 
 This script has no external dependencies.
+
+### Compiling from the TypeScript
+
+To save to ES6 in the current folder, assuming you have the correct libraries installed, run the following in this folder:
+
+`tsc -p tsconfig.json`
 
 ## Configuration
 
@@ -38,7 +45,7 @@ The referenced top of the page is an ID that should be defined and passed in to 
   2. If no ID was passed, check the body tag for an ID.
   3. If the body tag has no ID, use "#top".
 
-Browsers currently redirect to the top of the page for IDs not found. Should they stop doing this, the third option will need to be avoided (and removed from the code as an option).
+Browsers currently redirect to the top of the page for IDs not found. Should they stop doing this, the third option will need to be avoided (and removed from the code).
 
 The containing element ID should always be provided on instantiation.
 
@@ -61,7 +68,8 @@ This script assumes a document structure where it makes sense to have top links 
 | pAddTags    | string    | 'h2'        | Selector query string of elements.
 | pContainer  | string    | 'page-body' | Container element to search.
 | pTopId      | string    | null        | Target ID to link to in the page.
-| pSkipFirst  | string    | true        | Whether to skip the first found element.
+| pSkipFirst  | boolean   | true        | Whether to skip the first found element.
+| pExclude    | string    | see desc    | Containters to exlude from search for places to add top links. Defaults are: 'dl, #toc-links, .skip-toplink'.
 | pAuto       | boolean   | true        | Whether to automatically generate top links.
 
 ### Coding Example
@@ -75,10 +83,11 @@ const top_addtags   = 'h2';
 const top_container = 'page-body';
 const top_id        = '';
 const top_skipfirst = true;
+const top_exclude   = 'dl, #toc-links, .skip-toplink';
 const top_auto      = true;
 
 let mp = {
-  toplink: new mpc_toplink(top_addtags, top_container, top_id, top_skipfirst, top_auto),
+  toplink: new mpc_toplink(top_addtags, top_container, top_id, top_skipfirst, top_exclude, top_auto),
   ⋮
 };
 ```

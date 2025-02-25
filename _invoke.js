@@ -8,10 +8,11 @@ const top_addtags   = 'h2';
 const top_container = 'page-body';
 const top_id        = '';
 const top_skipfirst = true;
+const top_exclude   = 'dt, #toc-links, .skip-toplink';
 const top_auto      = true;
                     // All scripts in the mp namespace to avoid collisions.     *
 let mp = {
-  toplink: new mpc_toplink(top_addtags, top_container, top_id, top_skipfirst, top_auto),
+  toplink: new mpc_toplink(top_addtags, top_container, top_id, top_skipfirst, top_exclude, top_auto),
 // ...
 };
                     // only invoke these manually if auto=false                 *

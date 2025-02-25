@@ -20,42 +20,46 @@
  *                  |                   | receive top links.
  *  top_topID       | 'top'             | Default top id.
  *  top_skipFirst   | true              | Skip top link on first heading.
+ *  top_exclude     | 'dl, #toc-links,  | Comma separated list of parent
+ *                  | .skip-toplink'    | containers to exclude.
  *  top_auto        | true              | Automatically add tags or
  *                  |                   | wait for manual execution.
  * --- Revision History ------------------------------------------------------- *
  * 2023-11-27 | New TypeScript-compliant version
  * ---------------------------------------------------------------------------- */
 class mpc_toplink {
-    constructor(pAddTags = 'h2', pContainer = 'page-body', pTopId = null, pSkipFirst = true, pAuto = true) {
-        // Variables to generate links back to the top of the page  *
-        this.skipFirst = pSkipFirst;
-        this.addTags = pAddTags;
-        this.topID = (pTopId) || (document.body.id || 'top');
-        if (!this.topID.startsWith('#')) {
-            this.topID = '#' + this.topID;
-        }
-        this.container = pContainer;
-        this.topLinkDiv = document.createElement('div');
-        this.topLinkDiv.className = 'top-link';
-        this.topLinkA = document.createElement('a');
-        this.topLinkA.title = 'Back to Top';
-        this.topLinkA.href = this.topID;
-        this.topLinkA.innerHTML = '<span>[top]</span>';
-        this.topLinkDiv.appendChild(this.topLinkA);
-        if (pAuto) {
-            this.create();
-        }
+  constructor(pAddTags = 'h2', pContainer = 'page-body', pTopId = null, pSkipFirst = true, pExclude = 'dl, #toc-links, .skip-toplink', pAuto = true) {
+                    // Variables to generate links back to the top of the page  *
+    this.skipFirst = pSkipFirst;
+    this.addTags = pAddTags;
+    this.excludeParents = pExclude;
+    this.topID = (pTopId) || (document.body.id || 'top');
+    if (!this.topID.startsWith('#')) {
+      this.topID = '#' + this.topID;
     }
-    create() {
-        this.topList = document.getElementById(this.container)?.querySelectorAll(this.addTags);
-        this.topList.forEach((el) => {
-            if (this.skipFirst) {
-                this.skipFirst = false;
-            }
-            else if (el.parentNode) {
-                el.parentNode.insertBefore(this.topLinkDiv.cloneNode(true), el);
-            }
-        });
+    this.container = pContainer;
+    this.topLinkDiv = document.createElement('div');
+    this.topLinkDiv.className = 'top-link';
+    this.topLinkA = document.createElement('a');
+    this.topLinkA.title = 'Back to Top';
+    this.topLinkA.href = this.topID;
+    this.topLinkA.innerHTML = '<span>[top]</span>';
+    this.topLinkDiv.appendChild(this.topLinkA);
+    if (pAuto) {
+      this.create();
     }
+  }
+                    // Link generator                                           *
+  create() {
+    this.topList = document.getElementById(this.container)?.querySelectorAll(this.addTags);
+    this.topList.forEach((el) => {
+      if (this.skipFirst) {
+        this.skipFirst = false;
+      }
+      else if (!(el.closest(this.excludeParents)) && el.parentNode) {
+        el.parentNode.insertBefore(this.topLinkDiv.cloneNode(true), el);
+      }
+    });
+  }
 }
 /*! --- Copyright (c) 2023 Mootly Obviate -- See /LICENSE.md ------------------ */
