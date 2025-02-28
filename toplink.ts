@@ -1,6 +1,6 @@
 /** --- Jump to Top Link Generator -------------------------------------------- *
  * mpc_toplink 1.0.0
- * @copyright 2017-2023 Mootly Obviate -- See /LICENSE.md
+ * @copyright 2025 Mootly Obviate -- See /LICENSE.md
  * @license   MIT
  * @version   1.0.0
  * ---------------------------------------------------------------------------- *
@@ -41,7 +41,7 @@ class mpc_toplink {
     pContainer      : string            = 'page-body',
     pTopId          : string | null     = null,
     pSkipFirst      : boolean           = true,
-    pExclude         : string            = 'dl, #toc-links, .skip-toplink',
+    pExclude        : string            = 'dl, #toc-links, .skip-toplink',
     pAuto           : boolean           = true,
   ) {
                     // Variables to generate links back to the top of the page  *
