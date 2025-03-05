@@ -10,16 +10,16 @@ This was written in TypeScript and exported to ES2020.
 
 The files in this set are as follows:
 
-| path                   | description                                        |
-| ---------------------- | -------------------------------------------------- |
-| LICENSE.md             | License notice ( [MIT](https://mit-license.org) ). |
-| README.md              | This document.                                     |
-| mpc_toplink.ts         | The class definition in TypeScript.                |
-| mpc_toplink.js         | The class definition in ES6.                       |
-| mpc_toplink.min.js     | Minified version.                                  |
-| mpc_toplink.min.js.map | Map file.                                          |
-| tsconfig.json          | Example TS > ES2020 config setting.                |
-| _invoke.js             | Example implementation code.                       |
+| path               | description                                        |
+| ------------------ | -------------------------------------------------- |
+| LICENSE.md         | License notice ( [MIT](https://mit-license.org) ). |
+| README.md          | This document.                                     |
+| toplink.ts         | The class definition in TypeScript.                |
+| toplink.js         | The class definition in ES6.                       |
+| toplink.min.js     | Minified version.                                  |
+| toplink.min.js.map | Map file.                                          |
+| tsconfig.json      | Example TS > ES2020 config setting.                |
+| _invoke.js         | Example implementation code.                       |
 
 ## Installation
 
