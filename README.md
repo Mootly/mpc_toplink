@@ -61,14 +61,14 @@ This script assumes a document structure where it makes sense to have top links 
 
 ### Parameters
 
-| name        | type      | default     | description
-| ----------  | --------- | ----------  | ----------
-| pAddTags    | string    | 'h2'        | Selector query string of elements.
-| pContainer  | string    | 'page-body' | Container element to search.
-| pTopId      | string    | null        | Target ID to link to in the page.
-| pSkipFirst  | boolean   | true        | Whether to skip the first found element.
-| pExclude    | string    | see desc    | Containters to exlude from search for places to add top links. Defaults are: 'dl, #toc-links, .skip-toplink'.
-| pAuto       | boolean   | true        | Whether to automatically generate top links.
+| name       | type    | default                         | description                        |
+| ---------- | ------- | ------------------------------- | ---------------------------------- |
+| pAddTags   | string  | 'h2'                            | Selector query string of elements. |
+| pContainer | string  | 'page-body'                     | Container element to search.       |
+| pTopId     | string  | null                            | Target ID to link to in the page.  |
+| pSkipFirst | boolean | true                            | Skip the first found element.      |
+| pExclude   | string  | 'dl, #toc-links, .skip-toplink' | Containers to exlude.              |
+| pAuto      | boolean | true                            | Auto generate top links.           |
 
 ### Coding Example
 
