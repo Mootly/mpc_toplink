@@ -1,8 +1,8 @@
 /** --- Jump to Top Link Generator -------------------------------------------- *
- * mpc_toplink 1.0.0
- * @copyright 2025 Mootly Obviate -- See /LICENSE.md
+ * mpc_toplink 1.0.1
+ * @copyright 2023-2025 Mootly Obviate -- See /LICENSE.md
  * @license   MIT
- * @version   1.0.0
+ * @version   1.0.1
  * ---------------------------------------------------------------------------- *
  *  Automates jump link menu based on headings the current page.
  *  Invokes on: onload
@@ -25,6 +25,7 @@
  *  top_auto        | true              | Automatically add tags or
  *                  |                   | wait for manual execution.
  * --- Revision History ------------------------------------------------------- *
+ * 2025-03-10 | Added DOMContentLoaded handler to avoid edge cases.
  * 2023-11-27 | New TypeScript-compliant version
  * ---------------------------------------------------------------------------- */
 class mpc_toplink {
@@ -58,7 +59,7 @@ class mpc_toplink {
     this.topLinkA.href        = this.topID;
     this.topLinkA.innerHTML   = '<span>[top]</span>';
     this.topLinkDiv.appendChild(this.topLinkA);
-    if (pAuto) { this.create(); }
+    if (pAuto) { window.addEventListener('DOMContentLoaded', (ev) => { this.create(); }); }
   }
                     // Link generator                                           *
   create() {
@@ -72,4 +73,4 @@ class mpc_toplink {
     });
   }
  }
-/*! --- Copyright (c) 2023 Mootly Obviate -- See /LICENSE.md ------------------ */
+/*! --- Copyright (c) 2023-2025 Mootly Obviate -- See /LICENSE.md ------------- */

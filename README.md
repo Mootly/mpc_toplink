@@ -93,5 +93,5 @@ let mp = {
 If auto is set to false, manually invoke the top link generator on load.
 
 ```js
-window.addEventListener('load', (e) => { mp.toplink.create(); });
+window.addEventListener('DOMContentLoaded', (e) => { mp.toplink.create(); });
 ```
