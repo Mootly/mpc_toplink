@@ -15,7 +15,7 @@ The files in this set are as follows:
 | LICENSE.md         | License notice ( [MIT](https://mit-license.org) ). |
 | README.md          | This document.                                     |
 | toplink.ts         | The class definition in TypeScript.                |
-| toplink.js         | The class definition in ES6.                       |
+| toplink.js         | The class definition in ES2020.                    |
 | toplink.min.js     | Minified version.                                  |
 | toplink.min.js.map | Map file.                                          |
 | tsconfig.json      | Example TS > ES2020 config setting.                |
