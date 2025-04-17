@@ -1,5 +1,7 @@
 # MoosePlum Top Link Generator
 
+Repo: [Mootly/mpc_toplink](https://github.com/Mootly/mpc_toplink)
+
 This is just generates top links next to headings in the page.
 
 ## Dependencies
@@ -12,6 +14,7 @@ The files in this set are as follows:
 
 | path               | description                                        |
 | ------------------ | -------------------------------------------------- |
+| CHANGELOG.md       | The changelog for this widget.                     |
 | LICENSE.md         | License notice ( [MIT](https://mit-license.org) ). |
 | README.md          | This document.                                     |
 | toplink.ts         | The class definition in TypeScript.                |
